@@ -4,10 +4,42 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="index.css">
-    <title>parr0's website</title>
+    <title>eseparrondo's website</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 </head>
+<script>
+    var json = [];
+    var pala  = [];
+    var defi = [];
+    var lon;
+
+    $.ajax({
+      url: "https://raw.githubusercontent.com/ssvivian/WebstersDictionary/master/dictionary.json",
+      async: false,
+      cache: false,
+      dataType: "json",
+      processData: true,
+  
+    })
+    .done(
+      function(data){
+        lon = data.length;
+        //console.log(data);
+        for (let i = 0; i < data.length; i++) {
+                pala.push(data[i].word);  
+                defi.push(data[i].definitions);
+            }
+            
+      }
+    )
+    //console.log(pala);
+    //console.log(defi);
+    console.log(lon);
+    var tope = Math.floor(Math.random()*lon);
+      console.log(tope);
+</script>
 <body>
-    <h1>My personal Website</h1>
+    <h1>My personal wesite</h1>
+    <h2>A place to build my portfolio...</h2>
 </body>
 </html>
