@@ -9,12 +9,31 @@
 
 #fondo{
     position: absolute;
-    width: 100vw;
-    height: 100vh;
+    width: 100rem;
+    height: 100rem;
     left: 0;
     top: 0;
     z-index: -9999;
     background-color: #000;
     font-family: matrix;
     font-size: 1rem;
+}
+
+#caja{
+    width: 60%;
+    height: 10rem;
+    margin: auto;
+    background-color: thistle;
+    border-radius: 2rem;
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+}
+
+.subcaja{
+    width: 33.33%;
+    height: 100%;
+    padding: 1rem;
 }

@@ -57,26 +57,12 @@ function generateMatrix() {
 	}
 }
 
-function updateMatrix() {
-    for (let x = 0; x < avance.length; x++) {
-        for (let y = 0; y < avance[x].length; y++) {
-            const char = casca[Math.floor(Math.random() * casca.length)];
-            
-            if (avance[x][y].timer === 0) {
-                avance[x][y].text.textContent = char;
-                avance[x][y].timer = Math.floor(Math.random() * 10) + 1;
-            } else {
-                avance[x][y].timer--;
-            }
-        }
-    }
-}
-
 setInterval(() => {
 	generateMatrix();
 }, 60);
 
 setInterval(() => {
     document.getElementById("fondo").innerHTML = '';    
-    updateMatrix();
 }, 120);
+
+//incorporando splitjs
