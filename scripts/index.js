@@ -28,6 +28,10 @@ console.log(lon);
 var tope = Math.floor(Math.random()*lon);
   console.log(tope);
 
+var word = document.getElementById('palabra');
+word.innerHTML = pala[tope];
+console.log(word.innerHTML);
+/*pendiente de implementar
   //recogemos el svg que va a hacer de fondo
 var fondo = document.getElementById('fondo');
 
@@ -64,5 +68,30 @@ setInterval(() => {
 setInterval(() => {
     document.getElementById("fondo").innerHTML = '';    
 }, 120);
+*/
 
 //incorporando splitjs
+Split(['.a','.b','.c'],{
+  gutterSize:5,
+  sizes:[30,60,30],
+  minSize:[10,10,10],
+  //direction: "vertical"
+});
+
+/*Split(['.d','.e'],{
+  gutterSize:5,
+  sizes: [30,70],
+  direction: "vertical"
+});
+
+Split(['.f','.g'],{
+  gutterSize:5,
+  sizes: [30,70],
+  direction: "vertical"
+});
+
+Split(['.h','.i'],{
+  gutterSize:5,
+  sizes: [30,70],
+  direction: "vertical"
+});*/
