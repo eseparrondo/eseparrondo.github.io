@@ -26,11 +26,30 @@ $.ajax({
 console.log(lon);
 //definicion del tope de numeros que se pueden generar aleatoriamente
 var tope = Math.floor(Math.random()*lon);
-  console.log(tope);
-
+console.log(tope);
+var lon = pala[tope].length;
 var word = document.getElementById('palabra');
-word.innerHTML = pala[tope];
-console.log(word.innerHTML);
+word.innerHTML = '<input type="text" name="answ" id="answ" required>';
+word.innerHTML+=pala[tope];
+var defBox = document.getElementById('definicion');
+defBox.innerHTML = defi[tope];
+defBox.innerHTML+='<br>';
+defBox.innerHTML += '---';
+defBox.innerHTML+='<br>';
+defBox.innerHTML+='This word contains ' + lon + ' characters';
+var check = document.getElementById('comprobar');
+check.innerHTML = '<button type="submit">Check!</button>';
+
+var answe = document.getElementById('answ');
+var answeContent = answ.value;
+usrInput = answeContent.toUpperCase();
+check.onclick = function(){
+  console.log(answeContent);
+if(answe.value == pala[tope]){
+    alert('Vinimo a campionar');
+  }
+}
+
 /*pendiente de implementar
   //recogemos el svg que va a hacer de fondo
 var fondo = document.getElementById('fondo');
