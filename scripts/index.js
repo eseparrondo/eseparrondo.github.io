@@ -27,25 +27,26 @@ console.log(lon);
 //definicion del tope de numeros que se pueden generar aleatoriamente
 var tope = Math.floor(Math.random()*lon);
 console.log(tope);
-var lon = pala[tope].length;
+var long = pala[tope].length;
 var word = document.getElementById('palabra');
-word.innerHTML = '<input type="text" name="answ" id="answ" required>';
-word.innerHTML+=pala[tope];
+word.innerHTML = '<input type="text" name="answ" id="answ">';
+word.innerHTML+='<span class="borrosa" title="Show answer">' + pala[tope] + '</span>';
 var defBox = document.getElementById('definicion');
 defBox.innerHTML = defi[tope];
 defBox.innerHTML+='<br>';
 defBox.innerHTML += '---';
 defBox.innerHTML+='<br>';
-defBox.innerHTML+='This word contains ' + lon + ' characters';
+defBox.innerHTML+='This word contains ' + long + ' characters';
 var check = document.getElementById('comprobar');
 check.innerHTML = '<button type="submit">Check!</button>';
-
 var answe = document.getElementById('answ');
-var answeContent = answ.value;
-usrInput = answeContent.toUpperCase();
+
+
 check.onclick = function(){
+  var answeContent = answ.value;
+  answeContent = answeContent.toUpperCase();
   console.log(answeContent);
-if(answe.value == pala[tope]){
+if(answeContent == pala[tope]){
     alert('Vinimo a campionar');
   }
 }
@@ -114,3 +115,28 @@ Split(['.h','.i'],{
   sizes: [30,70],
   direction: "vertical"
 });*/
+
+document.querySelector('.borrosa').onclick = function(){
+  answ.disabled = true;
+  document.querySelector('.borrosa').style.color = 'black';
+  document.querySelector('.borrosa').style.textShadow = 'none';
+  document.querySelector('.borrosa').style.userSelect = 'none';
+  check.innerHTML = '<button type="submit">Try a different one</button>';
+}
+check.onclick = function(){
+  document.querySelector('.borrosa').style.color = 'black';
+  document.querySelector('.borrosa').style.textShadow = '0 0 8px #000;';
+  document.querySelector('.borrosa').style.userSelect = 'auto';
+  check.innerHTML = '<button type="submit">Check!</button>';
+  answ.disabled = false;
+  var tope = Math.floor(Math.random()*lon);
+  console.log(lon);
+  console.log(tope);
+  document.querySelector('.borrosa').innerHTML = pala[tope];
+  var answeContent = answ.value;
+  answeContent = answeContent.toUpperCase();
+  console.log(answeContent);
+if(answeContent == pala[tope]){
+    alert('Vinimo a campionar');
+  }
+}
