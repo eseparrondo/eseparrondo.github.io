@@ -41,14 +41,24 @@ var check = document.getElementById('comprobar');
 check.innerHTML = '<button type="submit">Check!</button>';
 var answe = document.getElementById('answ');
 
-
+//verify user input
 check.onclick = function(){
+  //gather the text
   var answeContent = answ.value;
-  answeContent = answeContent.toUpperCase();
-  console.log(answeContent);
-if(answeContent == pala[tope]){
-    alert('Vinimo a campionar');
-  }
+  //in case there is input, proceed
+ if(answeContent.length != 0){
+    answeContent = answeContent.toUpperCase();
+    console.log(answeContent);
+    //if the user word is the same as the generated one, proceed  
+    if(answeContent == pala[tope]){
+        alert('Correct answer');
+      }else{
+        alert('Wrong answer');
+      }
+ }else{
+    alert('Enter a word');
+ }
+
 }
 
 /*pendiente de implementar
@@ -116,27 +126,21 @@ Split(['.h','.i'],{
   direction: "vertical"
 });*/
 
+
+if(answ.disabled == true){
+  location.reload();  
+}
+
+
+//when clicking on the blurred word
 document.querySelector('.borrosa').onclick = function(){
-  answ.disabled = true;
+  //word is not blurred anymoreansw.disabled == true
   document.querySelector('.borrosa').style.color = 'black';
+  //input cannot be given
+  answ.disabled = true
   document.querySelector('.borrosa').style.textShadow = 'none';
   document.querySelector('.borrosa').style.userSelect = 'none';
-  check.innerHTML = '<button type="submit">Try a different one</button>';
+  //button text changes for trying again
+  check.innerHTML = '<button type="submit" id="submission">Try a different one</button>';
 }
-check.onclick = function(){
-  document.querySelector('.borrosa').style.color = 'black';
-  document.querySelector('.borrosa').style.textShadow = '0 0 8px #000;';
-  document.querySelector('.borrosa').style.userSelect = 'auto';
-  check.innerHTML = '<button type="submit">Check!</button>';
-  answ.disabled = false;
-  var tope = Math.floor(Math.random()*lon);
-  console.log(lon);
-  console.log(tope);
-  document.querySelector('.borrosa').innerHTML = pala[tope];
-  var answeContent = answ.value;
-  answeContent = answeContent.toUpperCase();
-  console.log(answeContent);
-if(answeContent == pala[tope]){
-    alert('Vinimo a campionar');
-  }
-}
+
