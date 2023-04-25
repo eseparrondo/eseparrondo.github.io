@@ -38,11 +38,16 @@ defBox.innerHTML += '---';
 defBox.innerHTML+='<br>';
 defBox.innerHTML+='This word contains ' + long + ' characters';
 var check = document.getElementById('comprobar');
-check.innerHTML = '<button type="submit">Check!</button>';
+check.innerHTML = '<button type="submit" id="submi">Check!</button>';
 var answe = document.getElementById('answ');
 
 //verify user input
-check.onclick = function(){
+document.getElementById("submi").onclick = function(){
+  console.log('logea'); 
+  if(answ.disabled){
+    location.reload();  
+    return;
+  }
   //gather the text
   var answeContent = answ.value;
   //in case there is input, proceed
@@ -58,7 +63,18 @@ check.onclick = function(){
  }else{
     alert('Enter a word');
  }
+}
 
+//when clicking on the blurred word
+document.querySelector('.borrosa').onclick = function(){
+  //word is not blurred anymoreansw.disabled == true
+  document.querySelector('.borrosa').style.color = 'black';
+  //input cannot be given
+  answ.disabled = true
+  document.querySelector('.borrosa').style.textShadow = 'none';
+  document.querySelector('.borrosa').style.userSelect = 'none';
+  //button text changes for trying again
+  document.getElementById('submi').innerHTML = 'Try a different one';
 }
 
 /*pendiente de implementar
@@ -108,39 +124,4 @@ Split(['.a','.b','.c'],{
   //direction: "vertical"
 });
 
-/*Split(['.d','.e'],{
-  gutterSize:5,
-  sizes: [30,70],
-  direction: "vertical"
-});
-
-Split(['.f','.g'],{
-  gutterSize:5,
-  sizes: [30,70],
-  direction: "vertical"
-});
-
-Split(['.h','.i'],{
-  gutterSize:5,
-  sizes: [30,70],
-  direction: "vertical"
-});*/
-
-
-if(answ.disabled == true){
-  location.reload();  
-}
-
-
-//when clicking on the blurred word
-document.querySelector('.borrosa').onclick = function(){
-  //word is not blurred anymoreansw.disabled == true
-  document.querySelector('.borrosa').style.color = 'black';
-  //input cannot be given
-  answ.disabled = true
-  document.querySelector('.borrosa').style.textShadow = 'none';
-  document.querySelector('.borrosa').style.userSelect = 'none';
-  //button text changes for trying again
-  check.innerHTML = '<button type="submit" id="submission">Try a different one</button>';
-}
 
